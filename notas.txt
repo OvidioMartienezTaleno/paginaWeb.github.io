@@ -1,0 +1,68 @@
+historia:
+
+/* Contenedor principal */
+.filaH {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-size: large;
+    align-items: center;
+    flex-wrap: wrap; /* Permite adaptación en pantallas pequeñas */
+    padding: 40px 20px;
+}
+
+/* Estilo de las tarjetas */
+.colH2, .colH3 {
+    width: 350px;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto hover para darle dinamismo */
+.colH2:hover, .colH3:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo de los textos dentro de las tarjetas */
+.colH2::after, .colH3::after {
+    content: attr(data-title); /* Usamos un atributo personalizado */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Hace aparecer el texto cuando pasas el mouse */
+.colH2:hover::after, .colH3:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos individuales */
+.colH2 {
+    background-image: url("/img/vikingo.jpg");
+}
+
+.colH3 {
+    background-image: url("/img/castillo.jpg");
+}
+
+
+
+
