@@ -49,7 +49,7 @@ html{
 
 .inicio{
     display: flex;
-    background-image: url("../assets/homeOF.jpeg");
+    background-image: url("./assets/homeOF.jpeg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
