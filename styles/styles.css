@@ -49,7 +49,7 @@ html{
 
 .inicio{
     display: flex;
-    background-image: url("assets/homeOF.jpeg");
+    background-image: url("../assets/homeOF.jpeg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -95,7 +95,7 @@ html{
 .colH2{
     display: flex;
     left: 0;
-    background-image: url("/assets/vikingo.jpg");
+    background-image: url("../assets/vikingo.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -106,7 +106,7 @@ html{
 .colH3{
     display: flex;
     left: 0;
-    background-image: url("./assets/castillo.jpg");
+    background-image: url("../assets/castillo.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
