@@ -118,7 +118,7 @@ html{
     
     display: flex;
     left: 0;
-    background-image: url("/assets/castillo.jpg");
+    background-image: url("../assets/vigeland.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
