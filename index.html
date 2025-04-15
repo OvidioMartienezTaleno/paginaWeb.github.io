@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="website icon" type="png" href="/assets/logoOslo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oslo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="website icon" type="png" href="assets/logoOslo.png">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -106,15 +108,15 @@
                 <center><h2>Festividades</h2></center>
                 
                 <div class="miniaturas">
-                    <img src="assets/diaNacional.jpg" alt="Festividad 1" class="miniatura activa" data-id="1">
-                    <img src="assets/oya.jpg" alt="Festividad 2" class="miniatura" data-id="2">
-                    <img src="assets/Spikersuppa.jpg" alt="Festividad 3" class="miniatura" data-id="3">
-                    <img src="assets/musica.jpg" alt="Festividad 4" class="miniatura" data-id="4">
-                    <img src="assets/solsticio.jpg" alt="Festividad 5" class="miniatura" data-id="5">
+                    <img src="/assets/diaNacional.jpg" alt="Festividad 1" class="miniatura activa" data-id="1">
+                    <img src="/assets/oya.jpg" alt="Festividad 2" class="miniatura" data-id="2">
+                    <img src="/assets/Spikersuppa.jpg" alt="Festividad 3" class="miniatura" data-id="3">
+                    <img src="/assets/musica.jpg" alt="Festividad 4" class="miniatura" data-id="4">
+                    <img src="/assets/solsticio.jpg" alt="Festividad 5" class="miniatura" data-id="5">
                 </div>
                 
                 <div class="modal">
-                    <img src="./assets/diaNacional.jpg" alt="Imagen principal" class="imagen-principal">
+                    <img src="/assets/diaNacional.jpg" alt="Imagen principal" class="imagen-principal">
                     <div class="texto-imagen">Celebración de la fiesta tradicional</div>
                     
                     <div class="controles">
@@ -123,16 +125,36 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!--atracciones turisticas-->
     <section id="atracciones" class="atracciones">
         <div id="contenedor-atracciones" class="contenedor-atracciones">
-            <h1>Atracciones</h1>
-        </div>
+            <h1>Atracciones Turísticas</h1>
             
+            <div class="controles-atracciones">
+                <select id="filtro-categoria" class="filtro-atracciones">
+                    <option value="todas">Todas las categorías</option>
+                    <option value="monumentos">Monumentos</option>
+                    <option value="castillos">Castillos</option>
+                    <option value="parques">Parques</option>
+                    <option value="museo">museos</option>
+                </select>
+                
+                <div class="buscador">
+                    <input type="text" id="campo-busqueda" class="campo-busqueda" placeholder="Buscar atracciones...">
+                    <button id="boton-busqueda" class="boton-busqueda">Buscar</button>
+                </div>
+            </div>
+            
+            <div id="lista-atracciones" class="lista-atracciones">
+                <!-- Se agregan dinamica mente las targetas de acciones. -->
+            </div>
+
+            <CEnter><h2 style="color: white;">Atracciones turística</h2></CEnter>
+            <div id="map"></div>
+        </div>
     </section>
 
 

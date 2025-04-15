@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding: 0;
+    background-color: #1e2326;
 }
 
 html{
@@ -49,13 +50,18 @@ html{
 
 .inicio{
     display: flex;
-    background-image: url("../assets/homeOF.jpeg");
+    background-image: url("/assets/homeOF.jpeg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     padding: 60px;
     min-height: 600px;
     color: rgb(0, 0, 0);
+    
+}
+
+.inicio::before{
+    opacity: 0.8;
 }
 
 .fila{
@@ -82,20 +88,23 @@ html{
 
 }
 .contenedor-historia > div{
-    
-    margin-bottom: 150px;
+    margin-bottom: 100px;
 }
+.contenedor-historia > div:last-child {
+    margin-bottom: 10px;
+}
+
 .filaH{
     display: flex;
     justify-content: space-between;
-    gap: 10%;
+    gap: 7%;
     font-size:large;
 }
 
 .colH2{
     display: flex;
     left: 0;
-    background-image: url("../assets/vikingo.jpg");
+    background-image: url("/assets/vikingo.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -106,7 +115,7 @@ html{
 .colH3{
     display: flex;
     left: 0;
-    background-image: url("../assets/castillo.jpg");
+    background-image: url("/assets/castillo.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -118,7 +127,7 @@ html{
     
     display: flex;
     left: 0;
-    background-image: url("../assets/vigeland.jpg");
+    background-image: url("/assets/vigeland.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -138,7 +147,7 @@ html{
 
 /*--------------------------------------------------------------*/
 .galeria {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
     background-color: #414549;
@@ -234,6 +243,7 @@ html{
 /*--------------------------------------------------------------*/
 
 /*atraciones*/
+/*
 .atracciones{
     left: 0;
     top: 0;
@@ -241,6 +251,230 @@ html{
     background-color: #1e2326;
     color: white;
 }
+*/
+ /* Estilos para la sección de atracciones */
+ .atracciones {
+    padding: 40px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contenedor-atracciones h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #ffffff;
+    font-size: 2.5rem;
+}
+
+/* Contenedor de las tarjetas de atracciones */
+.lista-atracciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+/* Estilos para cada tarjeta de atracción */
+.tarjeta-atraccion {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-atraccion:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Imagen de la atracción */
+.imagen-atraccion {
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.imagen-atraccion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.tarjeta-atraccion:hover .imagen-atraccion img {
+    transform: scale(1.1);
+}
+
+/* Contenido de la tarjeta */
+.contenido-atraccion {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.nombre-atraccion {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.descripcion-atraccion {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #555;
+    flex-grow: 1;
+}
+
+/* Detalles de la atracción - MEJORADO PARA TEXTOS GRANDES */
+.detalles-atraccion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.detalle {
+    position: relative;
+    padding-left: 24px;
+}
+
+.detalle h4 {
+    font-size: 0.85rem;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+
+.detalle h4::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: #3498db;
+    border-radius: 50%;
+}
+
+.detalle p {
+    font-size: 0.9rem;
+    color: #343a40;
+    line-height: 1.4;
+    /* Permitir que texto largo se envuelva correctamente */
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+/* Lista de detalles para info estructurada */
+.detalle ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.detalle li {
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+}
+
+.detalle li strong {
+    font-weight: 600;
+    margin-right: 5px;
+}
+
+/* Enlace al sitio oficial */
+.enlace-sitio {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background-color: #455966;
+    color: white;
+    text-decoration: none;
+    border-radius: .5rem;
+    transition: background-color 0.2s;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: auto;
+}
+
+.enlace-sitio:hover {
+    background-color: #2980b9;
+}
+
+/* Filtros y controles */
+.controles-atracciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.filtro-atracciones {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+.buscador {
+    display: flex;
+    gap: 10px;
+}
+
+.campo-busqueda {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 250px;
+}
+
+.boton-busqueda {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.boton-busqueda:hover {
+    background-color: #2980b9;
+}
+
+/* MAPA*/
+#map {
+    height: 500px;
+    width: 100%;
+    margin: 20px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*----------------------------------------------------------------------------------------------------------*/
 /*gastronomia*/
@@ -262,7 +496,6 @@ html{
     background-color: #1e2326;
     color: white;
 }
-
 
 /*----------------------------------------------------------------------------------------------------------*/
 /*FOOTER*/
@@ -289,3 +522,4 @@ footer .arriba{
     line-height: 50px;
     font-size: 18px;
 }
+
