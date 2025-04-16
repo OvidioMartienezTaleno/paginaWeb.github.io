@@ -83,6 +83,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+//Galeria: ======================================================================================================================================
+
+
 const atracciones = [
     //Datos dinamicos de las festividades
     {
@@ -180,7 +183,9 @@ const atracciones = [
         nombre: "Korketrekkeren",
         src: "assets/korketreCP.jpg",
         descripcion: "Montar en trineo en 'Korketrekkeren' (= el sacacorchos), la pista más grande para trineos. La pista es iluminada por la noche.",
-        horarios: "Lunes-Viernes: Winter 10:00-21:00, Sábado: Winter 09:00-21:00, Domingo: Winter 10:00-18:00",
+        horarios: ["Lunes-Viernes: Winter 10:00-21:00 ", 
+                    "Sábado: Winter 09:00-21:00 ", 
+                    "Domingo: Winter 10:00-18:00 "],
         costo: "El alquiler del tobogán cuesta entre 100-150 NOK",
         categoria: "parques",
         sitioWeb: "https://www.tripadvisor.com.mx/Attraction_Review-g190479-d591707-Reviews-Korketrekkeren-Oslo_Eastern_Norway.html"
@@ -289,8 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// MAPA:
-
+// MAPA: ======================================================================================================================================
 var mapa = L.map("map").setView([59.91340666508375, 10.752853444768544], 12);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -349,4 +353,450 @@ ubicacionesAtracciones.forEach((lugar) => {
 });
 
 
+// gastronomia: ======================================================================================================================================
+
+// Datos de platos típicos
+const platillos = [
+    {
+        id: 1,
+        tipo: 'plato',
+        nombre: 'Lutefisk',
+        src: 'assets/restaurante/Lutefisk.png',
+        descripcion: 'Bacalao seco tratado con sosa cáustica que adquiere una textura gelatinosa. Es un plato navideño muy tradicional en Noruega.',
+        ingredientes: [
+            { nombre: 'Bacalao seco', alergeno: true },
+            { nombre: 'Agua', alergeno: false },
+            { nombre: 'Sosa cáustica', alergeno: false },
+            { nombre: 'Mantequilla (para acompañar)', alergeno: true },
+            { nombre: 'Puré de patatas', alergeno: false },
+            { nombre: 'Tocino o panceta', alergeno: false },
+            { nombre: 'Mostaza (opcional)', alergeno: false },
+        ]
+    },
+    {
+        id: 2,
+        tipo: 'plato',
+        nombre: 'Salmón ahumado',
+        src: 'assets/restaurante/Salmon-ahumado.png',
+        descripcion: 'Filetes de salmón tratados con sal y azúcar, luego ahumados para realzar su sabor. Se disfruta con pan, ensaladas o como aperitivo.',
+        ingredientes: [
+            { nombre: 'Salmón fresco', alergeno: true },
+            { nombre: 'Sal', alergeno: false },
+            { nombre: 'Azúcar', alergeno: false },
+            { nombre: 'Eneldo (para decorar)', alergeno: false },
+            { nombre: 'Pan de centeno', alergeno: true }, 
+            { nombre: 'Queso crema', alergeno: true }, 
+            { nombre: 'Rodajas de limón', alergeno: false },
+        ]
+    },
+    {
+        id: 3,
+        tipo: 'plato',
+        nombre: 'Lefse',
+        src: 'assets/restaurante/Lefse.png',
+        descripcion: 'Esta es una especie de pan noruego que se hace con patatas, leche y levadura. Su forma de comer es en forma de tortilla y enrollado. Hay otras variantes como la tynnlefse que se hace con mantequilla, azúcar y canela y es más parecido a un bizcocho.',
+        ingredientes: [
+            { nombre: 'Patatas', alergeno: false },
+            { nombre: 'Harina de trigo', alergeno: true }, 
+            { nombre: 'Mantequilla', alergeno: true }, 
+            { nombre: 'Leche o nata', alergeno: true },
+            { nombre: 'Azúcar (para versiones dulces)', alergeno: false },
+            { nombre: 'Canela (opcional)', alergeno: false },
+            { nombre: 'Salmón ahumado (opcional, para versiones saladas)', alergeno: true },
+        ]
+    },
+    {
+        id: 4,
+        tipo: 'plato',
+        nombre: 'Geitost',
+        src: 'assets/restaurante/Geitost.png',
+        descripcion: 'Es un queso con sabor dulce pero con ese toque amargo que le da la leche de cabra. Suele servirse y comerse fresco y cortado en tiras muy finas para tomar con el café.',
+        ingredientes: [
+            { nombre: 'Suero de leche de cabra', alergeno: true }, 
+            { nombre: 'Crema', alergeno: true }, 
+            { nombre: 'Leche (opcional)', alergeno: true }, 
+            { nombre: 'Pan de centeno', alergeno: true }, 
+            { nombre: 'Frutas como manzanas o uvas', alergeno: false },
+        ]
+    },
+    {
+        id: 5,
+        tipo: 'plato',
+        nombre: 'Risgrøt',
+        src: 'assets/restaurante/Risgrot.png',
+        descripcion: 'Este postre típico noruego es una versión del arroz con leche, a diferencia de que el risgrøt se sirve caliente y con un poco de mantequilla y canela por encima. ',
+        ingredientes: [
+            { nombre: 'Arroz', alergeno: false },
+            { nombre: 'Leche', alergeno: true }, 
+            { nombre: 'Azúcar', alergeno: false },
+            { nombre: 'Canela en polvo', alergeno: false },
+            { nombre: 'Mantequilla (para servir)', alergeno: true }, 
+            { nombre: 'Pasas (opcional)', alergeno: false },
+            { nombre: 'Cardamomo (opcional)', alergeno: false },
+        ]
+    },
+];
+
+// Datos de restaurantes recomendados
+const restaurantes = [
+    {
+        id: 6,
+        tipo: 'restaurante',
+        nombre: 'Maaemo',
+        src: 'assets/restaurante/Maaemo2.jpg',
+        imagenAmplia: 'assets/restaurante/Maaemo2.jpg',
+        descripcion: 'Restaurante con tres estrellas Michelin que ofrece cocina innovadora nórdica con ingredientes ecológicos locales. Una experiencia gastronómica de alto nivel en el corazón de Oslo.',
+        horario: 'Miércoles a sábado: 18:00-00:00. Domingo a martes: cerrado.',
+        telefono: '+47 919 94 310',
+        enlace: 'https://www.maaemo.no'
+    },
+    {
+        id: 7,
+        tipo: 'restaurante',
+        nombre: 'Kontrast',
+        src: 'assets/restaurante/Kontrast.jpg',
+        imagenAmplia: 'assets/restaurante/Kontrast.jpg',
+        descripcion: 'Restaurante con estrella Michelin especializado en cocina moderna nórdica, utilizando productos de temporada e ingredientes noruegos de alta calidad.',
+        horario: 'Martes a sábado: 18:00-22:30. Domingo y lunes: cerrado.',
+        telefono: '+47 21 60 01 01',
+        enlace: 'https://www.restaurant-kontrast.no'
+    },
+    {
+        id: 8,
+        tipo: 'restaurante',
+        nombre: 'Ekeberg Restaurant',
+        src: 'assets/restaurante/ekebergrestauranten.jpg',
+        imagenAmplia: 'assets/restaurante/ekebergrestauranten.jpg',
+        descripcion: 'Ubicado en la colina Ekeberg con vistas panorámicas a la ciudad y el fiordo de Oslo. Ofrece cocina noruega moderna en un edificio histórico de estilo art déco.',
+        horario: 'Todos los días: 11:00-23:00',
+        telefono: '+47 23 24 23 00',
+        enlace: 'https://www.ekebergrestauranten.com'
+    },
+];
+
+
+const galeriaItems = [
+    platillos[0],
+    platillos[1],
+    restaurantes[0],
+    platillos[2],
+    restaurantes[1],
+    platillos[3],
+    platillos[4],
+    restaurantes[2]
+];
+
+// Función para cargar los elementos en la galería
+function cargarGaleria() {
+    const galeriaElement = document.getElementById('gastronomiaG');
     
+    galeriaItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.className = 'item';
+        itemElement.dataset.id = item.id;
+        itemElement.dataset.tipo = item.tipo;
+        
+        itemElement.innerHTML = `
+            <div class="item-image-container">
+                <img class="item-image" src="${item.src}" alt="${item.nombre}">
+                <div class="item-overlay">
+                    <div class="item-title">${item.nombre}</div>
+                    <div class="item-type">${item.tipo === 'plato' ? 'Plato típico' : 'Restaurante recomendado'}</div>
+                </div>
+            </div>
+        `;
+        
+        itemElement.addEventListener('click', () => mostrarModal(item));
+        galeriaElement.appendChild(itemElement);
+    });
+}
+
+// Función para mostrar el modal según el tipo de elemento
+function mostrarModal(item) {
+    if (item.tipo === 'plato') {
+        mostrarModalPlato(item);
+    } else if (item.tipo === 'restaurante') {
+        mostrarModalRestaurante(item);
+    }
+}
+
+// Función para mostrar el modal de plato típico
+function mostrarModalPlato(plato) {
+    document.getElementById('plato-title').textContent = plato.nombre;
+    document.getElementById('plato-image').src = plato.src;
+    document.getElementById('plato-image').alt = plato.nombre;
+    document.getElementById('plato-description').textContent = plato.descripcion;
+    
+    const ingredientesList = document.getElementById('ingredientes-list');
+    ingredientesList.innerHTML = '';
+    
+    plato.ingredientes.forEach(ingrediente => {
+        const li = document.createElement('li');
+        
+        const span = document.createElement('span');
+        span.textContent = ingrediente.nombre;
+        li.appendChild(span);
+        
+        if (ingrediente.alergeno) {
+            const alertTag = document.createElement('span');
+            alertTag.className = 'alergeno-tag';
+            alertTag.textContent = 'Alérgeno';
+            li.appendChild(alertTag);
+        }
+        
+        ingredientesList.appendChild(li);
+    });
+    
+    document.getElementById('modal-plato').style.display = 'flex';
+}
+
+// Función para mostrar el modal de restaurante
+function mostrarModalRestaurante(restaurante) {
+    document.getElementById('restaurante-title').textContent = restaurante.nombre;
+    document.getElementById('restaurante-image').src = restaurante.imagenAmplia;
+    document.getElementById('restaurante-image').alt = restaurante.nombre;
+    document.getElementById('restaurante-description').textContent = restaurante.descripcion;
+    document.getElementById('restaurante-horario').textContent = restaurante.horario;
+    document.getElementById('restaurante-telefono').textContent = restaurante.telefono;
+    
+    const enlace = document.getElementById('restaurante-enlace');
+    enlace.href = restaurante.enlace;
+    
+    document.getElementById('modal-restaurante').style.display = 'flex';
+}
+
+// Función para cerrar cualquier modal abierto
+function closeModal() {
+    document.getElementById('modal-plato').style.display = 'none';
+    document.getElementById('modal-restaurante').style.display = 'none';
+}
+
+// Cerrar modal al hacer clic fuera del contenido
+window.addEventListener('click', function(event) {
+    if (event.target === document.getElementById('modal-plato')) {
+        closeModal();
+    }
+    if (event.target === document.getElementById('modal-restaurante')) {
+        closeModal();
+    }
+});
+
+// Iniciar la carga de la galería cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', cargarGaleria);
+
+
+//-=====================================================================================================================
+// Datos de transporte en formato JSON
+
+
+const datosTransporte = {
+
+    aeropuertos: [
+        {
+            id: "osl",
+            nombre: "Aeropuerto de Oslo Gardermoen (OSL)",
+            direccion: "Edvard Munchs veg, 2061 Gardermoen, Noruega",
+            horario: "Abierto 24 horas todos los días",
+            tarifas: [
+                "Tren Airport Express (Flytoget): 210-240 NOK, 19-22 minutos",
+                "Tren regional (Vy): 114 NOK, 23-25 minutos",
+                "Autobús Flybussen: 199 NOK, 40-50 minutos",
+                "Taxi: 700-1000 NOK, 40 minutos"
+            ],
+            servicios: [
+                "Tiendas libres de impuestos",
+                "Restaurantes y cafeterías",
+                "Cambio de divisas",
+                "Alquiler de coches",
+                "Wi-Fi gratuito",
+                "Consignas para equipaje",
+                "Salas VIP"
+            ],
+            sitioWeb: "https://avinor.no/en/airport/oslo-airport/",
+            ubicacion: [60.19440, 11.10045],
+            textoPopup: "Principal aeropuerto internacional de Oslo",
+            src: "assets/transporte/Gardermoen.jpg"
+        },
+        {
+            id: "trf",
+            nombre: "Aeropuerto de Oslo Torp Sandefjord (TRF)",
+            direccion: "Torpveien 130, 3241 Sandefjord, Noruega",
+            horario: "04:30 - 00:30 (varía según temporada)",
+            tarifas: [
+                "Tren (con shuttle al aeropuerto): 279 NOK, 1 hora 45 minutos",
+                "Autobús Torp-Ekspressen: 299 NOK, 1 hora 45 minutos",
+                "Taxi: aproximadamente 2500 NOK, 1 hora 30 minutos"
+            ],
+            servicios: [
+                "Tiendas duty-free",
+                "Cafeterías",
+                "Alquiler de coches",
+                "Cambio de divisas",
+                "Wi-Fi gratuito",
+                "Zona de juegos infantil"
+            ],
+            sitioWeb: "https://www.torp.no/en/",
+            ubicacion: [59.18671, 10.25803],
+            textoPopup: "Aeropuerto secundario con vuelos económicos",
+            src: "assets/transporte/TRF.jpg"
+        }
+    ],
+
+    estaciones: [
+        {
+            id: "oslos",
+            nombre: "Estación Central de Oslo (Oslo S)",
+            direccion: "Jernbanetorget 1, 0154 Oslo, Noruega",
+            horario: "Abierta 24 horas (servicios de 04:00 a 01:00)",
+            tarifas: [
+                "Billete sencillo zona 1 (centro): 39 NOK",
+                "Billete de 24 horas: 117 NOK",
+                "Billete de 7 días: 323 NOK",
+                "Oslo Pass (incluye transporte): 445 NOK (24h), 655 NOK (48h), 820 NOK (72h)"
+            ],
+            servicios: [
+                "Conexiones de trenes nacionales e internacionales",
+                "Metro, tranvía y autobuses urbanos",
+                "Centro comercial",
+                "Restaurantes y cafeterías",
+                "Consignas para equipaje",
+                "Oficina de turismo",
+                "Alquiler de coches",
+                "Supermercado"
+            ],
+            sitioWeb: "https://www.visitoslo.com/es/producto/?tlp=2979523&name=Oslo-S--la-estacion-central-de-Oslo",
+            ubicacion: [59.91098, 10.75255],
+            textoPopup: "Principal estación de trenes de la ciudad",
+            src: "assets/transporte/Central.jpg"
+        },
+        {
+            id: "oslometro",
+            nombre: "Estación de Metro Stortinget",
+            direccion: "Stortingsgata 22, 0161 Oslo, Noruega",
+            horario: "05:00 - 00:00 todos los días",
+            tarifas: [
+                "Billete sencillo: 39 NOK",
+                "Billete de 24 horas: 117 NOK",
+                "Billete semanal: 323 NOK"
+            ],
+            servicios: [
+                "Conexiones con las líneas principales del metro",
+                "Acceso a autobuses urbanos",
+                "Información turística",
+                "Wi-Fi gratuito"
+            ],
+            sitioWeb: "https://ruter.no/",
+            ubicacion: [59.91208, 10.73475],
+            textoPopup: "Principal estación de metro en Oslo",
+            src: "assets/transporte/stortinget.jpg"
+        },
+        {
+            id: "osloferry",
+            nombre: "Terminal de Ferry de Oslo",
+            direccion: "Vippetangen, Akershusstranda 35, 0150 Oslo, Noruega",
+            horario: "Varía según temporada y operador",
+            tarifas: [
+                "Ferry a Copenhague: desde 550 NOK por trayecto",
+                "Ferry a Kiel (Alemania): desde 650 NOK por trayecto",
+                "Ferries locales a las islas del fiordo: incluido con billete de transporte público (39 NOK)"
+            ],
+            servicios: [
+                "Conexiones internacionales a Dinamarca y Alemania",
+                "Ferries locales a las islas del fiordo de Oslo",
+                "Terminal de cruceros",
+                "Restaurantes",
+                "Tiendas",
+                "Oficina de información turística (temporada alta)",
+                "Servicios aduaneros"
+            ],
+            sitioWeb: "https://www.oslohavn.no/en/",
+            ubicacion: [59.90358, 10.74174],
+            textoPopup: "Conexiones a Dinamarca, Alemania e islas del fiordo",
+            src: "assets/transporte/Ferry.jpg"
+        }
+    ]
+};
+
+
+function createTransportItem(item) {
+    const element = document.createElement('div');
+    element.className = 'transport-item';
+    element.setAttribute('data-id', item.id);
+    
+    // Construir HTML del elemento
+    let html = `
+        <h3>${item.nombre}</h3>
+        <img src="${item.src}">
+        <p><strong>Dirección:</strong> ${item.direccion}</p>
+        <p><strong>Horarios:</strong> ${item.horario}</p>
+    `;
+    
+    // Agregar tarifas
+    html += '<p><strong>Tarifas:</strong></p><ul>';
+    item.tarifas.forEach(fare => {
+        html += `<li>${fare}</li>`;
+    });
+    html += '</ul>';
+    
+    // Agregar servicios
+    html += '<div class="services"><h4>Servicios y Facilidades</h4><ul>';
+    item.servicios.forEach(service => {
+        html += `<li>${service}</li>`;
+    });
+    html += '</ul></div>';
+    
+    // Agregar enlace
+    html += `<a href="${item.sitioWeb}" class="btn" target="_blank">Sitio web oficial</a>`;
+    
+    element.innerHTML = html;
+    return element;
+}
+
+// Función para cargar los datos de transporte
+function loadTransportData() {
+    const airportsContainer = document.getElementById('airports-container');
+    const stationsContainer = document.getElementById('stations-container');
+    
+    // Limpiar contenedores
+    airportsContainer.innerHTML = '';
+    stationsContainer.innerHTML = '';
+
+    // Cargar aeropuertos
+    datosTransporte.aeropuertos.forEach(airport => {
+        airportsContainer.appendChild(createTransportItem(airport));
+    });
+    
+    // Cargar estaciones
+    datosTransporte.estaciones.forEach(station => {
+        stationsContainer.appendChild(createTransportItem(station));
+    });
+}
+
+// Inicializar el mapa
+
+function initMap() {
+    // Centrar mapa en Oslo
+     var mapa = L.map("mapa2").setView([59.91340666508375, 10.752853444768544], 11);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: '© OpenStreetMap',
+        maxZoom: 19,
+    }).addTo(mapa);
+    
+    // Agregar marcadores para aeropuertos
+    datosTransporte.aeropuertos.forEach(aeropuerto => {
+        const marker = L.marker(aeropuerto.ubicacion).addTo(mapa);
+        marker.bindPopup(`<b>${aeropuerto.nombre}</b><br>${aeropuerto.textoPopup}`);
+    });
+    
+    // Agregar marcadores para estaciones
+    datosTransporte.estaciones.forEach(estacion => {
+        const marker = L.marker(estacion.ubicacion).addTo(mapa);
+        marker.bindPopup(`<b>${estacion.nombre}</b><br>${estacion.textoPopup}`);
+    });
+}
+
+// Inicializar todo cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    loadTransportData();
+    initMap();
+});

@@ -241,17 +241,8 @@ html{
     background-color: rgba(0,0,0,0.8);
 }
 /*--------------------------------------------------------------*/
-
 /*atraciones*/
-/*
-.atracciones{
-    left: 0;
-    top: 0;
-    padding: 50px 20px;
-    background-color: #1e2326;
-    color: white;
-}
-*/
+
  /* Estilos para la sección de atracciones */
  .atracciones {
     padding: 40px 0;
@@ -263,7 +254,7 @@ html{
     text-align: center;
     margin-bottom: 30px;
     color: #ffffff;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 /* Contenedor de las tarjetas de atracciones */
@@ -331,7 +322,7 @@ html{
     flex-grow: 1;
 }
 
-/* Detalles de la atracción - MEJORADO PARA TEXTOS GRANDES */
+
 .detalles-atraccion {
     display: flex;
     flex-direction: column;
@@ -464,26 +455,205 @@ html{
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /*----------------------------------------------------------------------------------------------------------*/
 /*gastronomia*/
 .gastronomia{
-    left: 0;
-    top: 0;
-    padding: 50px 20px;
     background-color: #252A2E;
+    padding: 40px 0;
+
+}
+.contenedor-galeria {
+    max-width: 1200px;
+    margin: 0 auto;
+    
+}
+
+.contenedor-galeria h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.gastronomiaG {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.item {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.item:hover {
+    transform: scale(1.03);
+}
+
+.item-image-container {
+    position: relative;
+    padding-bottom: 100%; /* Relación cuadrada 1:1 */
+    overflow: hidden;
+}
+
+.item-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 12px;
     color: white;
+}
+
+.item-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.item-type {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* Modal styles */
+.modal-gastronomia {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    padding: 16px;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 24px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.modal-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.modal-description {
+    color: #333;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.ingredients-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.ingredients-list {
+    list-style-type: none;
+}
+
+.ingredients-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.alergeno-tag {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+}
+
+.restaurant-info {
+    margin-top: 16px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.info-icon {
+    margin-right: 8px;
+    color: #3b82f6;
+    width: 18px;
+    text-align: center;
+}
+
+.restaurant-link {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.restaurant-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .gastronomiaG {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .gastronomiaG {
+        grid-template-columns: 1fr;
+    }
 }
 
 
@@ -494,7 +664,112 @@ html{
     top: 0;
     padding: 50px 20px;
     background-color: #1e2326;
+    color: rgb(0, 0, 0);
+}
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Headers */
+.comoLlegar h1, .comoLlegar h2 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+/* Intro box */
+.info-box {
+    background-color: #293036;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.info-box p{
     color: white;
+}
+
+/* Transportation containers */
+.transportation-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.transport-item{
+    background-color: white;
+}
+
+.transport-item {
+    flex: 1;
+    min-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+.transport-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.transport-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+
+.services {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+.services h4 {
+    margin-top: 0;
+    color: #016fb9;
+}
+.services ul {
+    padding-left: 20px;
+}
+
+
+.btn {
+    display: inline-block;
+    background-color: #455966;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+.btn:hover {
+    background-color: #016fb9;
+}
+
+
+/* Loading text */
+.loading {
+    font-style: italic;
+    color: #cccccc;
+    text-align: center;
+}
+
+/* Map styles */
+#mapa2 {
+    height: 500px;
+    width: 100%;
+    margin: 20px 0;
+    border: 2px solid #f8f9fa;
+    border-radius: 8px;
 }
 
 /*----------------------------------------------------------------------------------------------------------*/

@@ -152,7 +152,7 @@
                 <!-- Se agregan dinamica mente las targetas de acciones. -->
             </div>
 
-            <CEnter><h2 style="color: white;">Atracciones turística</h2></CEnter>
+            <h1>Ubicaciones</h1>
             <div id="map"></div>
         </div>
     </section>
@@ -160,18 +160,79 @@
 
     <!--gastronomia-->
     <section id="gastronomia" class="gastronomia">
-        <div id="contenedor-gastronomia" class="contenedor-gastronomia">
-            <h1>gastronomia</h1>
+        <div class="contenedor-galeria" id="contenedor-galeria">
+            <h1>Gastronomía</h1>
+            
+            <div class="gastronomiaG" id="gastronomiaG">
+                <!-- Los elementos se cargarán dinámicamente -->
+            </div>
         </div>
+    
+        <div class="modal-gastronomia" id="modal-plato">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="plato-title"></h2>
+                    <button class="close-button" onclick="closeModal()">&times;</button>
+                </div>
+                <img class="modal-image" id="plato-image" src="" alt="">
+                <p class="modal-description" id="plato-description"></p>
+                <h3 class="ingredients-title">Ingredientes principales:</h3>
+                <ul class="ingredients-list" id="ingredientes-list"></ul>
+            </div>
+        </div>
+
+        <div class="modal-gastronomia" id="modal-restaurante">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="restaurante-title"></h2>
+                    <button class="close-button" onclick="closeModal()">&times;</button>
+                </div>
+                <img class="modal-image" id="restaurante-image" src="" alt="">
+                <p class="modal-description" id="restaurante-description"></p>
+                <div class="restaurant-info">
+                    <div class="info-item">
+                        <span class="info-icon">🕒</span>
+                        <span id="restaurante-horario"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <span id="restaurante-telefono"></span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌐</span>
+                        <a href="#" id="restaurante-enlace" class="restaurant-link" target="_blank">Visitar sitio web oficial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
+
     <!--como llegar-->
-
     <section id="comoLlegar" class="comoLlegar">
-        <div id="contenedor-comoLlegar" class="contenedor-comoLlegar">
-            <h1>como llegar</h1>
-        </div>
+        <div class="container">
+            <h1>Cómo Llegar a Oslo</h1>
 
+    
+            <div class="info-box">
+                <p>Oslo, la capital de Noruega, es accesible a través de varios medios de transporte. A continuación, encontrarás información detallada sobre los principales aeropuertos y estaciones de transporte público que te permitirán llegar y moverte por la ciudad.</p>
+            </div>
+    
+            <h2>Aeropuertos</h2>
+            <div id="airports-container" class="transportation-container">
+                <div class="loading">Cargando aeropuertos</div>
+            </div>
+    
+            <h2>Estaciones de Transporte</h2>
+            <div id="stations-container" class="transportation-container">
+                <div class="loading">Cargando estaciones</div>
+            </div>
+    
+            <h2>Mapa de Aeropuertos y Estaciones</h2>
+            <div id="mapa2"></div>
+    
+        </div>
     </section>
 
       <!--FOOTER-->
