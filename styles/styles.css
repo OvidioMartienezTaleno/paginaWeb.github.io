@@ -44,13 +44,21 @@ html{
     color:aqua;
 }
 
+.nav-responsitive{
+    background-color: #1CB698;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
 
 /*----------------------------------------------------------------------------------------------------------*/
 /*seccion de inicio*/
 
 .inicio{
     display: flex;
-    background-image: url("/assets/homeOF.jpeg");
+    background-image: url("../assets/homeOF.jpeg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -104,7 +112,7 @@ html{
 .colH2{
     display: flex;
     left: 0;
-    background-image: url("/assets/vikingo.jpg");
+    background-image: url("../assets/vikingo.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -115,7 +123,7 @@ html{
 .colH3{
     display: flex;
     left: 0;
-    background-image: url("/assets/castillo.jpg");
+    background-image: url("../assets/castillo.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -127,7 +135,7 @@ html{
     
     display: flex;
     left: 0;
-    background-image: url("/assets/vigeland.jpg");
+    background-image: url("../assets/vigeland.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -643,19 +651,6 @@ html{
     text-decoration: underline;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .gastronomiaG {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .gastronomiaG {
-        grid-template-columns: 1fr;
-    }
-}
-
 
 /*----------------------------------------------------------------------------------------------------------*/
 /*como llegar*/
@@ -798,3 +793,123 @@ footer .arriba{
     font-size: 18px;
 }
 
+/*==================================================================================================================*/
+/*responsive*/
+@media (max-width: 992px) {
+    .fila, .filaH {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+    }
+
+    .col h1 {
+        font-size: 36px;
+    }
+
+    .colH2, .colH3, .colH4 {
+        padding: 20%;
+    }
+
+    .contenedor-header {
+        padding: 10px;
+    }
+}
+
+/* Dispositivos pequeños (móviles) */
+@media (max-width: 768px) {
+    nav{
+        display: none;
+    } 
+    .nav-responsive{
+        display: block;
+    }
+    nav.responsive{
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 75px;
+        background-color: #252A2E;
+        width: 180px;
+    }
+    nav.responsive ul{
+        display: block !important;
+    }
+    nav.responsive ul li{
+        border-bottom: 1px solid #fff;
+        padding: 10px 0;
+    }
+
+    .inicio {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background-size: contain;
+        background-position: top center;
+        background-repeat: no-repeat;
+        padding: 40px 20px;
+        min-height: 400px;
+        color: white;
+        text-align: center;
+    }
+
+    /* Capa semi-transparente sobre el fondo */
+    .inicio::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Opacidad del fondo */
+        z-index: 0;
+    }
+
+    /* El contenido se mantiene por encima del overlay */
+    .inicio > * {
+        position: relative;
+        z-index: 1;
+    }
+
+    .galeria {
+        padding: 10px;
+    }
+
+    .contenedor-atracciones {
+        padding: 10px;
+    }
+
+    .tarjeta-atraccion {
+        margin-bottom: 20px;
+    }
+
+    .controles-atracciones {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    .buscador {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .campo-busqueda {
+        width: 100%;
+    }
+
+    .comoLlegar .transportation-container {
+        grid-template-columns: 1fr;
+    }
+
+    #id-nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #id-nav ul li {
+        margin: 10px 0;
+    }
+
+    .modal {
+        height: auto;
+    }
+}

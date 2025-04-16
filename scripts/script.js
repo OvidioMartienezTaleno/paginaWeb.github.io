@@ -800,3 +800,23 @@ document.addEventListener('DOMContentLoaded', function() {
     loadTransportData();
     initMap();
 });
+
+
+let menuVisible = false;
+
+//funcionamiento del menu
+function mostrarOcultarMenu(){
+    if(menuVisible){
+        document.getElementById("id-nav").classList ="";
+        menuVisible = false;
+    }else{
+        document.getElementById("id-nav").classList="responsive";
+        menuVisible = true
+    }
+}
+
+function seleccionar(){
+    //ocultar el menu una vez seleccione la opcion
+    document.getElementById("nav").classList="";
+    menuVisible = false;
+}
