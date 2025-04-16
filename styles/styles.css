@@ -912,4 +912,34 @@ footer .arriba{
     .modal {
         height: auto;
     }
+
+    .galeria {
+        padding: 10px;
+    }
+
+    .miniaturas {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .miniatura {
+        width: 70px;
+        height: 50px;
+    }
+
+    .modal {
+        height: 250px;
+    }
+
+    .texto-imagen {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .control {
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        margin: 0 5px;
+    }
 }
